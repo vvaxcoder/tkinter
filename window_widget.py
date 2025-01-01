@@ -2,11 +2,15 @@ import tkinter as tk
 from tkinter import ttk
 
 
-def button_func(arg):
+def button_func(arg=None):
+    # print(button.configure())
     if arg == 'test':
         print('hello')
     else:
         print('Button was pressed')
+
+    string_var.set('string_var was rewritten')
+    window.quit()
 
 
 # create a window
@@ -21,11 +25,14 @@ tk.Text(master=window).pack()
 label = ttk.Label(master=window)
 label.pack()
 
+# tkinter variable
+string_var = tk.StringVar(value='This should be default value')
+
 # ttk entry
-entry = ttk.Entry(master=window)
+entry = ttk.Entry(master=window, textvariable=string_var)
 entry.pack()
 
-label_test = ttk.Label(master=window, text='Test label')
+label_test = ttk.Label(master=window, textvariable=string_var)
 label_test.pack()
 
 # button_test = ttk.Button(master=window, text='Execute test button', command=button_func('test'))
